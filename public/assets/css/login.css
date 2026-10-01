@@ -1,0 +1,76 @@
+/* Atomicos login: constellation background + glass card */
+:root{--ink:#0B1020;--teal:#2DE2C0;--violet:#8B7DFF;--amber:#FFB547;--rose:#EF476F}
+*{box-sizing:border-box}
+body.lg-body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--ink);color:#EEF1FA;font-family:'Inter',system-ui,sans-serif}
+#lgCanvas{position:fixed;inset:0;z-index:0}
+.lg-glow{position:fixed;width:48vmax;height:48vmax;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none;animation:lgDrift 18s ease-in-out infinite alternate}
+.lg-glow-1{background:#6C5CE7;top:-18vmax;left:-12vmax}
+.lg-glow-2{background:#0FBFA0;bottom:-20vmax;right:-14vmax;animation-delay:-9s}
+
+.lg-stage{position:relative;z-index:1;min-height:100vh;display:grid;grid-template-columns:1fr;place-items:center;gap:40px;padding:24px;max-width:1180px;margin:0 auto}
+@media (min-width:992px){.lg-stage{grid-template-columns:1.1fr 440px;place-items:center stretch}}
+
+/* Hero */
+.lg-hero{display:none}
+@media (min-width:992px){.lg-hero{display:block;padding-right:30px}}
+.lg-hero-brand{display:flex;align-items:center;gap:12px;font:700 1.5rem 'Space Grotesk',sans-serif;animation:lgRise .8s both}
+.lg-headline{font:700 clamp(2.2rem,4vw,3.4rem)/1.12 'Space Grotesk',sans-serif;margin:34px 0 16px;letter-spacing:-1px;animation:lgRise .8s .15s both}
+.lg-rotator{display:inline-block;background:linear-gradient(90deg,var(--teal),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;transition:opacity .35s,transform .35s}
+.lg-rotator.out{opacity:0;transform:translateY(12px)}
+.lg-sub{max-width:460px;color:#9AA6C9;font-size:1.05rem;animation:lgRise .8s .3s both}
+.lg-chips{list-style:none;padding:0;margin:30px 0 0;display:flex;flex-wrap:wrap;gap:10px}
+.lg-chips li{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;font-size:.85rem;color:#C9D1EA;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);animation:lgRise .7s var(--d) both,lgFloat 5s calc(var(--d) + 1s) ease-in-out infinite alternate}
+.lg-chips i{color:var(--teal)}
+
+/* Card */
+.lg-card{width:100%;max-width:440px;margin:0 auto;text-align:center;padding:38px 34px 26px;border-radius:26px;
+  background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,.45);animation:lgCard .9s cubic-bezier(.2,.8,.2,1) both}
+.lg-card.lg-shake{animation:lgShake .45s}
+.lg-card.lg-leave{transition:all .45s ease;transform:scale(.96) translateY(-10px);opacity:0}
+.lg-title{font:700 1.7rem 'Space Grotesk',sans-serif;margin:16px 0 4px}
+.lg-muted{color:#9AA6C9;margin:0 0 22px;font-size:.95rem}
+.lg-rise{animation:lgRise .7s var(--d,0s) both}
+
+/* Animated logo */
+.lg-a{stroke-dasharray:100;stroke-dashoffset:100;animation:lgDraw 1s .35s ease forwards}
+.lg-nucleus{transform-origin:50px 62px;transform:scale(0);animation:lgPop .5s 1.15s cubic-bezier(.3,1.6,.5,1) forwards}
+.lg-electron{opacity:0;animation:lgFade .3s 1.3s forwards}
+.lg-pulse{transform-origin:50px 25px;opacity:0;animation:lgPulse 2.4s 1.6s ease-out infinite}
+
+/* Form */
+.lg-form{display:grid;gap:14px;text-align:left}
+.lg-form .form-floating{position:relative}
+.lg-form .form-control{height:58px;border-radius:14px;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);transition:border-color .2s,box-shadow .2s,background .2s}
+.lg-form .form-control:focus{background:rgba(255,255,255,.1);border-color:var(--teal);box-shadow:0 0 0 .25rem rgba(45,226,192,.18)}
+.lg-form .form-floating>label{color:#8F9BBF;padding-left:16px}
+.lg-form .form-floating>label::after{background:transparent!important}
+.lg-form .form-floating>.form-control:focus~label,.lg-form .form-floating>.form-control:not(:placeholder-shown)~label{color:var(--teal);opacity:1}
+.lg-form .form-control:-webkit-autofill{-webkit-text-fill-color:#fff;-webkit-box-shadow:0 0 0 60px #17203d inset}
+#password{padding-right:48px}
+.lg-eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:38px;height:38px;border:0;border-radius:10px;background:transparent;color:#9AA6C9;z-index:5;transition:color .2s,background .2s}
+.lg-eye:hover{color:var(--teal);background:rgba(255,255,255,.07)}
+
+.lg-btn{margin-top:6px;height:54px;border:0;border-radius:14px;color:#07201B;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;
+  background:linear-gradient(110deg,var(--teal),#7C8CFF,var(--violet),var(--teal));background-size:300% 100%;animation:lgRise .7s var(--d) both,lgShift 6s linear infinite;transition:transform .15s,box-shadow .2s}
+.lg-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(45,226,192,.28)}
+.lg-btn:active{transform:translateY(0)}
+.lg-btn i{transition:transform .25s}.lg-btn:hover i{transform:translateX(5px)}
+.lg-btn:disabled{opacity:.8;cursor:wait;transform:none}
+.lg-btn .spin{width:18px;height:18px;border:2px solid rgba(7,32,27,.3);border-top-color:#07201B;border-radius:50%;animation:lgSpin .7s linear infinite}
+
+.lg-alert{margin-bottom:14px;padding:10px 14px;border-radius:12px;font-size:.88rem;text-align:left;color:#FFB3C3;background:rgba(239,71,111,.12);border:1px solid rgba(239,71,111,.35);animation:lgRise .3s both}
+.lg-foot{margin:22px 0 0;font-size:.75rem;color:#6F7BA3}
+
+@keyframes lgRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes lgCard{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes lgDraw{to{stroke-dashoffset:0}}
+@keyframes lgPop{to{transform:scale(1)}}
+@keyframes lgFade{to{opacity:1}}
+@keyframes lgPulse{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(3.4)}}
+@keyframes lgShift{to{background-position:300% 0}}
+@keyframes lgShake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}}
+@keyframes lgSpin{to{transform:rotate(360deg)}}
+@keyframes lgFloat{to{transform:translateY(-6px)}}
+@keyframes lgDrift{to{transform:translate(8vmax,6vmax) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

@@ -1,0 +1,59 @@
+/* Atomicos theme on top of AdminLTE 4 / Bootstrap 5 */
+:root{
+  --atm-ink:#0B1020; --atm-ink-2:#141B33; --atm-teal:#2DE2C0; --atm-violet:#6C5CE7;
+  --atm-amber:#FFB547; --atm-rose:#EF476F; --atm-line:#E2E5EF;
+  --bs-primary:#0FBFA0; --bs-primary-rgb:15,191,160;
+  --bs-link-color:#0A9C83; --bs-link-hover-color:#087E6B;
+  --bs-body-font-family:'Inter',system-ui,sans-serif;
+  --bs-tertiary-bg:#F4F6FB; --bs-tertiary-bg-rgb:244,246,251;
+  --bs-border-radius:.75rem;
+}
+h1,h2,h3,h4,h5,.brand-text,.info-box-number{font-family:'Space Grotesk',system-ui,sans-serif}
+
+/* Buttons & inputs */
+.btn-atm{background:linear-gradient(135deg,var(--atm-teal),var(--atm-violet));border:0;color:#fff;font-weight:600}
+.btn-atm:hover,.btn-atm:focus{color:#fff;filter:brightness(1.08)}
+.form-control:focus,.form-select:focus{border-color:var(--atm-teal);box-shadow:0 0 0 .25rem rgba(45,226,192,.2)}
+
+/* Sidebar */
+.atm-sidebar{background:var(--atm-ink)!important;border-right:0}
+.atm-sidebar .sidebar-brand{background:transparent;border-bottom:1px solid rgba(255,255,255,.07)}
+.atm-sidebar .brand-link{display:flex;align-items:center;gap:10px}
+.atm-sidebar .brand-image{width:34px;height:34px;max-height:none;margin:0;float:none}
+.atm-sidebar .brand-text{color:#fff;font-weight:700;font-size:1.3rem;letter-spacing:-.3px;margin:0}
+.atm-sidebar .nav-header{color:#6F7BA3;font-size:.68rem;letter-spacing:.12em;font-weight:600;padding:18px 16px 6px}
+.atm-sidebar .nav-link{color:#aab3d1;border-radius:10px;margin:2px 8px;transition:all .15s}
+.atm-sidebar .nav-link:hover{background:var(--atm-ink-2);color:#fff}
+.atm-sidebar .sidebar-menu .nav-link.active{background:linear-gradient(135deg,rgba(45,226,192,.18),rgba(108,92,231,.22))!important;color:var(--atm-teal)!important;box-shadow:inset 3px 0 0 var(--atm-teal)}
+.atm-sidebar .nav-icon{color:inherit}
+.atm-sidebar-foot{position:absolute;bottom:0;left:0;right:0;padding:12px 20px;font-size:.72rem;color:#58638a}
+
+/* Navbar */
+.app-header{border-bottom:1px solid var(--atm-line);box-shadow:none}
+.atm-clock{font-size:.82rem;color:#6b7390;font-variant-numeric:tabular-nums}
+.atm-avatar{width:32px;height:32px;border-radius:50%;display:inline-grid;place-items:center;font-size:.72rem;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--atm-teal),var(--atm-violet))}
+.atm-avatar-lg{width:56px;height:56px;font-size:1.1rem;margin-bottom:8px}
+.atm-user-head{text-align:center;padding:20px 16px 14px}
+.atm-page-title{font-weight:700}
+
+/* Cards */
+.atm-card,.atm-panel{background:#fff;border:1px solid var(--atm-line);border-radius:16px;padding:20px}
+.atm-panel{padding:0;overflow:hidden;box-shadow:none}
+.atm-panel .card-header{background:#fff;border-bottom:1px solid var(--atm-line)}
+.atm-panel .card-title{font-weight:600;font-size:1rem}
+
+/* Info boxes */
+.atm-info{border:1px solid var(--atm-line);border-radius:16px;box-shadow:none;transition:transform .2s,box-shadow .2s}
+.atm-info:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(11,16,32,.08)}
+.atm-info .info-box-icon{border-radius:14px;margin:8px;width:62px;height:62px;font-size:1.6rem}
+.atm-info .info-box-number{font-size:1.7rem;font-weight:700}
+.atm-teal{background:rgba(45,226,192,.16);color:#0FBFA0}
+.atm-violet{background:rgba(108,92,231,.15);color:var(--atm-violet)}
+.atm-amber{background:rgba(255,181,71,.2);color:#C9820A}
+.atm-rose{background:rgba(239,71,111,.15);color:var(--atm-rose)}
+
+/* Welcome banner */
+.atm-welcome{position:relative;overflow:hidden;display:flex;justify-content:space-between;align-items:center;color:#fff;border-radius:18px;padding:26px 30px;
+  background:radial-gradient(circle at 90% 0%,rgba(45,226,192,.45),transparent 50%),radial-gradient(circle at 10% 100%,rgba(108,92,231,.55),transparent 55%),var(--atm-ink)}
+.atm-welcome h4{font-weight:700}
+.atm-welcome-icon{font-size:4.5rem;opacity:.15}
