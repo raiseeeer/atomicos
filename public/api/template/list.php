@@ -1,5 +1,54 @@
 <?php
 /**
+ * ============================================================================
+ * FILE     : public/api/positions/list.php
+ * MODULE   : Positions
+ * ACTION   : LIST (read)
+ * ----------------------------------------------------------------------------
+ * PURPOSE
+ *   Returns one page of position records, filtered by search/status and
+ *   sorted by the chosen column, plus the totals needed to draw the pager.
+ *
+ * USE CASE
+ *   Positions page: initial load, search, sort, status filter, page change,
+ *   page-size change, and reload after add/edit/delete.
+ *
+ * ACCESS   : admin, hr
+ * METHOD   : POST (CSRF token required)
+ * TABLES   : positions (read)
+ * CALLED BY: public/assets/js/positions.js -> loadList()
+ *
+ * REQUEST (POST fields)
+ *   search    string  no   matches title (partial)
+ *   status    int     no   0 = all, 1 = Active, 2 = Inactive
+ *   page      int     no   default 1 (corrected if out of range)
+ *   per_page  int     no   10 to 100 in steps of 10, default 10
+ *   sort      string  no   title | base_salary | created_at | position_status
+ *   dir       string  no   asc | desc
+ *
+ * RESPONSE (JSON)
+ *   { success:true, message:"", data:{ rows:[...], total, page, pages } }
+ *
+ * STATUS CODES
+ *   200 OK | 403 Forbidden | 405 Wrong method | 419 Bad CSRF | 500 Server error
+ *
+ * FLOW
+ *   1. Guards: role, method, CSRF
+ *   2. Read input; whitelist per_page and sort column
+ *   3. Build WHERE once (shared by both queries)
+ *   4. Query 1: COUNT(*) of matching rows
+ *   5. Page math (pages, clamp page, offset)
+ *   6. Query 2: SELECT ... LIMIT/OFFSET for this page
+ *   7. Return rows + paging data
+ *
+ * CHANGELOG
+ *   2026-10-02  Created from api/template/list.php
+ * ============================================================================
+ */
+
+
+
+/**
  * LIST: returns rows with search + pagination.
  *
  * Request  (POST): search, page, per_page
